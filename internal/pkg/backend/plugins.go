@@ -11,13 +11,13 @@ package backend
 
 // PluginConfig AFAIRE.
 func (b *Backend) PluginConfig(plugin string) (interface{}, error) {
-	var data interface{}
+	var cfg interface{}
 
-	if err := b.pgc.QueryRow(`SELECT config FROM plugins WHERE name = $1`, plugin).Scan(&data); err != nil {
+	if err := b.pgc.QueryRow(`SELECT config FROM plugins WHERE name = $1`, plugin).Scan(&cfg); err != nil {
 		return nil, err
 	}
 
-	return data, nil
+	return cfg, nil
 }
 
 /*

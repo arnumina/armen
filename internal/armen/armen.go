@@ -90,7 +90,7 @@ func (a *Armen) Run() error {
 
 	// Config
 	//..................................................................................................................
-	sConfig, err := config.New(a.util, a.app).Load()
+	rConfig, err := config.New(a.util, a.app).Load()
 	if err != nil {
 		if errors.Is(err, config.ErrStopApp) { // --help, --version
 			return nil
@@ -101,23 +101,23 @@ func (a *Armen) Run() error {
 
 	// Logger
 	//..................................................................................................................
-	sLogger, err := logger.Build(a.util, a.app, sConfig)
+	rLogger, err := logger.Build(a.util, a.app, rConfig)
 	if err != nil {
 		return a.onError(err)
 	}
 
-	a.ctn.SetLogger(sLogger)
+	a.ctn.SetLogger(rLogger)
 
 	defer func() {
-		sLogger.Info( //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+		rLogger.Info( //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 			"===END",
 			"uptime", time.Since(a.app.StartedAt()).Round(time.Second).String(),
 		)
 
-		sLogger.Close()
+		rLogger.Close()
 	}()
 
-	sLogger.Info( //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	rLogger.Info( //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 		"===BEGIN",
 		"id", a.app.ID(),
 		"name", a.app.Name(),
@@ -128,86 +128,86 @@ func (a *Armen) Run() error {
 
 	// Bus
 	//..................................................................................................................
-	sBus := bus.New(a.util, sLogger)
-	defer sBus.Close()
-	a.ctn.SetBus(sBus)
+	rBus := bus.New(a.util, rLogger)
+	defer rBus.Close()
+	a.ctn.SetBus(rBus)
 
 	// Backend
 	//..................................................................................................................
-	sBackend, err := backend.New(a.util, sLogger).Build(sConfig)
+	rBackend, err := backend.New(a.util, rLogger).Build(rConfig)
 	if err != nil {
 		return a.onError(err)
 	}
 
-	defer sBackend.Close()
+	defer rBackend.Close()
 
 	// Leader
 	//..................................................................................................................
-	sLeader, err := leader.New(a.app, sLogger, sBackend).Build()
+	rLeader, err := leader.New(a.app, rLogger, rBackend).Build()
 	if err != nil {
 		return a.onError(err)
 	}
 
-	defer sLeader.Close()
-	a.ctn.SetLeader(sLeader)
+	defer rLeader.Close()
+	a.ctn.SetLeader(rLeader)
 
 	// Model
 	//..................................................................................................................
-	sModel, err := model.New(sLogger, sBus, sBackend).Build()
+	rModel, err := model.New(rLogger, rBus, rBackend).Build()
 	if err != nil {
 		return a.onError(err)
 	}
 
-	defer sModel.Close()
-	a.ctn.SetModel(sModel)
+	defer rModel.Close()
+	a.ctn.SetModel(rModel)
 
 	// Server
 	//..................................................................................................................
-	sServer, err := server.New(a.util, sLogger, sConfig).Start()
+	rServer, err := server.New(a.util, rLogger, rConfig).Start()
 	if err != nil {
 		return a.onError(err)
 	}
 
-	defer sServer.Stop()
-	a.ctn.SetServer(sServer)
+	defer rServer.Stop()
+	a.ctn.SetServer(rServer)
 
 	// Plugins
 	//..................................................................................................................
-	sPlugins, err := plugins.New().Load(a.ctn)
+	rPlugins, err := plugins.New().Load(a.ctn)
 	if err != nil {
 		return a.onError(err)
 	}
 
-	defer sPlugins.Close()
+	defer rPlugins.Close()
 
 	// Scheduler
 	//..................................................................................................................
-	sScheduler, err := scheduler.New(a.util, sLogger, sBus, sLeader).Build(sBackend)
+	rScheduler, err := scheduler.New(a.util, rLogger, rBus, rLeader).Build(rBackend)
 	if err != nil {
 		return a.onError(err)
 	}
 
-	defer sScheduler.Close()
+	defer rScheduler.Close()
 
 	// (de)register
 	//..................................................................................................................
-	if err := sBackend.RegisterInstance(a.app, sServer); err != nil {
+	if err := rBackend.RegisterInstance(a.app, rServer); err != nil {
 		return err
 	}
 
 	defer func() {
-		_ = sBackend.DeregisterInstance(a.app.ID()) // AFINIR: email ?
+		_ = rBackend.DeregisterInstance(a.app.ID()) // AFINIR: email ?
 	}()
 
 	// Workers
 	//..................................................................................................................
-	sWorkers := workers.New(a.util, sLogger, sBus, sModel, sPlugins).Start(sConfig)
-	defer sWorkers.Stop()
+	rWorkers := workers.New(a.util, rLogger, rBus, rModel, rPlugins).Start(rConfig)
+	defer rWorkers.Stop()
 
-	sScheduler.Start()
+	rScheduler.Start()
 	a.waitEnd()
-	sLogger.Info("Stopping...") //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	sScheduler.Stop()
+	rLogger.Info("Stopping...") //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	rScheduler.Stop()
 
 	return nil
 }

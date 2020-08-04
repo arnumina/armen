@@ -13,12 +13,12 @@ import "github.com/mitchellh/mapstructure"
 
 // PluginConfig AFAIRE.
 func (m *Model) PluginConfig(plugin string, config interface{}) error {
-	data, err := m.backend.PluginConfig(plugin)
+	cfg, err := m.backend.PluginConfig(plugin)
 	if err != nil {
 		return err
 	}
 
-	if err := mapstructure.Decode(data, config); err != nil {
+	if err := mapstructure.Decode(cfg, config); err != nil {
 		return err
 	}
 
