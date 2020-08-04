@@ -1,0 +1,15 @@
+### https://github.com/golangci/golangci-lint
+###------------------------------------------
+
+linters:
+  enable-all: true
+  disable:
+    - funlen
+    - gochecknoglobals
+    - gocognit
+    - gomnd
+
+linters-settings:
+  gocritic:
+    disabled-checks:
+       - ifElseChain
