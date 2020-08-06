@@ -18,6 +18,8 @@ import (
 
 	"github.com/arnumina/armen.core/pkg/resources"
 	"github.com/arnumina/crypto"
+	"github.com/arnumina/logger"
+	"github.com/arnumina/uuid"
 )
 
 const (
@@ -60,6 +62,11 @@ func (u *Util) LoggerPrefix(name, id string) string {
 	}
 
 	return fmt.Sprintf("%s.%s", name, id)
+}
+
+// CloneLogger AFAIRE.
+func (u *Util) CloneLogger(logger *logger.Logger, prefix string) *logger.Logger {
+	return logger.Clone(u.LoggerPrefix(prefix, uuid.New()))
 }
 
 // FileExist AFAIRE.

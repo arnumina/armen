@@ -18,7 +18,6 @@ import (
 	"github.com/arnumina/failure"
 	"github.com/arnumina/logger"
 	"github.com/arnumina/pgsql"
-	"github.com/arnumina/uuid"
 
 	"github.com/arnumina/armen/internal/pkg/config"
 	"github.com/arnumina/armen/internal/pkg/util"
@@ -56,7 +55,7 @@ type (
 func New(util util.Resource, logger *logger.Logger) *Backend {
 	return &Backend{
 		util: util,
-		pgc:  pgsql.NewClient(logger.Clone(util.LoggerPrefix("backend", uuid.New()))),
+		pgc:  pgsql.NewClient(util.CloneLogger(logger, "backend")),
 	}
 }
 

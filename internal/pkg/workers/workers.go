@@ -13,7 +13,6 @@ import (
 	"sync"
 
 	"github.com/arnumina/logger"
-	"github.com/arnumina/uuid"
 
 	"github.com/arnumina/armen/internal/pkg/bus"
 	"github.com/arnumina/armen/internal/pkg/config"
@@ -51,7 +50,7 @@ func New(util util.Resource, logger *logger.Logger, bus bus.Resource, model mode
 
 func (w *Workers) goWorker(temporary bool) {
 	go func() {
-		logger := w.logger.Clone(w.util.LoggerPrefix("worker", uuid.New()))
+		logger := w.util.CloneLogger(w.logger, "worker")
 
 		if temporary {
 			logger.Info("+++Worker") //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

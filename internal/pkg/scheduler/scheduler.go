@@ -16,7 +16,6 @@ import (
 	"github.com/arnumina/armen.core/pkg/message"
 	"github.com/arnumina/failure"
 	"github.com/arnumina/logger"
-	"github.com/arnumina/uuid"
 	"github.com/robfig/cron/v3"
 
 	"github.com/arnumina/armen/internal/pkg/backend"
@@ -44,7 +43,7 @@ type (
 func New(util util.Resource, logger *logger.Logger, bus bus.Resource, leader leader.Resource) *Scheduler {
 	return &Scheduler{
 		tools: &tools{
-			logger:  logger.Clone(util.LoggerPrefix("scheduler", uuid.New())),
+			logger:  util.CloneLogger(logger, "scheduler"),
 			leader:  leader,
 			channel: bus.AddPublisher("scheduler", 1, 1),
 		},

@@ -21,7 +21,6 @@ import (
 	"github.com/arnumina/armen.core/pkg/resources"
 	"github.com/arnumina/failure"
 	"github.com/arnumina/logger"
-	"github.com/arnumina/uuid"
 	"github.com/gorilla/mux"
 
 	"github.com/arnumina/armen/internal/pkg/config"
@@ -50,7 +49,7 @@ type (
 
 // New AFAIRE.
 func New(util util.Resource, logger *logger.Logger, config config.Resource) *Server {
-	logger = logger.Clone(util.LoggerPrefix("server", uuid.New()))
+	logger = util.CloneLogger(logger, "server")
 	cfg := config.Server()
 	adapter := logger.NewLogAdapter("error")
 	router := mux.NewRouter()

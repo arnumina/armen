@@ -16,7 +16,6 @@ import (
 	"github.com/arnumina/armen.core/pkg/message"
 	"github.com/arnumina/armen.core/pkg/resources"
 	"github.com/arnumina/logger"
-	"github.com/arnumina/uuid"
 
 	"github.com/arnumina/armen/internal/pkg/util"
 )
@@ -53,7 +52,7 @@ func New(util util.Resource, logger *logger.Logger) *Bus {
 
 func (b *Bus) goConsumer(publisher string, ch <-chan *message.Message) {
 	go func() {
-		logger := b.logger.Clone(b.util.LoggerPrefix(publisher, uuid.New()))
+		logger := b.util.CloneLogger(b.logger, publisher)
 
 		logger.Info(">>>Bus") //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
