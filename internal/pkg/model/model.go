@@ -20,6 +20,7 @@ import (
 
 	"github.com/arnumina/armen/internal/pkg/backend"
 	"github.com/arnumina/armen/internal/pkg/bus"
+	"github.com/arnumina/armen/internal/pkg/util"
 )
 
 type (
@@ -32,6 +33,7 @@ type (
 
 	// Model AFAIRE.
 	Model struct {
+		util    util.Resource
 		logger  *logger.Logger
 		bus     bus.Resource
 		backend backend.Resource
@@ -41,8 +43,9 @@ type (
 )
 
 // New AFAIRE.
-func New(logger *logger.Logger, bus bus.Resource, backend backend.Resource) *Model {
+func New(util util.Resource, logger *logger.Logger, bus bus.Resource, backend backend.Resource) *Model {
 	return &Model{
+		util:    util,
 		logger:  logger,
 		bus:     bus,
 		backend: backend,

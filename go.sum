@@ -1,6 +1,6 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/arnumina/armen.core v0.0.0-20200805200520-b2fe1ef12dad h1:2HneQa60YMomBiaKPQpQdZvidi0pLx09KZD41fkevBo=
-github.com/arnumina/armen.core v0.0.0-20200805200520-b2fe1ef12dad/go.mod h1:a1580ZyYcZdrATzNInbuonTXtUX2LwVNTWu7VTxm1W4=
+github.com/arnumina/armen.core v0.0.0-20200807105409-dbcd04f807d5 h1:5yCJUcieWBh7WY9VbqNbkgUrY+mqwI+3CDzn2WVOgaY=
+github.com/arnumina/armen.core v0.0.0-20200807105409-dbcd04f807d5/go.mod h1:a1580ZyYcZdrATzNInbuonTXtUX2LwVNTWu7VTxm1W4=
 github.com/arnumina/config v0.0.0-20200713162522-b3a68382e176 h1:GGQZWRGv/F8b71Gm8BCuEKVf+5z7fqFwYFA7rDJ/KQQ=
 github.com/arnumina/config v0.0.0-20200713162522-b3a68382e176/go.mod h1:1OBnZKftL+ZwyrmyKOWNzGA3kLImL0F4pUgfn300h/A=
 github.com/arnumina/crypto v0.0.0-20200718202434-d84a54720f1f h1:PCjLKem3iNTjMjyX9nwzz11BQZDOzbnoUM4E75guW3o=
@@ -67,7 +67,6 @@ github.com/jackc/pgtype v1.3.1-0.20200510190516-8cd94a14c75a/go.mod h1:vaogEUkAL
 github.com/jackc/pgtype v1.3.1-0.20200606141011-f6355165a91c/go.mod h1:cvk9Bgu/VzJ9/lxTO5R5sf80p0DiucVtN7ZxvaC4GmQ=
 github.com/jackc/pgtype v1.4.2 h1:t+6LWm5eWPLX1H5Se702JSBcirq6uWa4jiG4wV1rAWY=
 github.com/jackc/pgtype v1.4.2/go.mod h1:JCULISAZBFGrHaOXIIFiyfzW5VY0GRitRr8NeJsrdig=
-github.com/jackc/pgx v3.6.2+incompatible h1:2zP5OD7kiyR3xzRYMhOcXVvkDZsImVXfj+yIyTQf3/o=
 github.com/jackc/pgx/v4 v4.0.0-20190420224344-cc3461e65d96/go.mod h1:mdxmSJJuR08CZQyj1PVQBHy9XOp5p8/SHH6a0psbY9Y=
 github.com/jackc/pgx/v4 v4.0.0-20190421002000-1b8f0016e912/go.mod h1:no/Y67Jkk/9WuGR0JG/JseM9irFbnEPbuWV2EELPNuM=
 github.com/jackc/pgx/v4 v4.0.0-pre1.0.20190824185557-6972a5742186/go.mod h1:X+GQnOEnf1dqHGpw7JmHqHc1NxDoalibchSk9/RWuDc=
@@ -104,7 +103,6 @@ github.com/mitchellh/mapstructure v1.3.3 h1:SzB1nHZ2Xi+17FP0zVQBHIZqvwRN9408fJO8
 github.com/mitchellh/mapstructure v1.3.3/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
-github.com/robfig/cron v1.2.0 h1:ZjScXvvxeQ63Dbyxy76Fj3AT3Ut0aKsyd2/tl3DTMuQ=
 github.com/robfig/cron/v3 v3.0.1 h1:WdRxkvbJztn8LMz/QEvLN5sBU+xKpSqwwUO1Pjr4qDs=
 github.com/robfig/cron/v3 v3.0.1/go.mod h1:eQICP3HwyT7UooqI/z+Ov+PtYAWygg1TEWWzGIFLtro=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=

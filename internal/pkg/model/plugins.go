@@ -9,8 +9,6 @@
 
 package model
 
-import "github.com/mitchellh/mapstructure"
-
 // PluginConfig AFAIRE.
 func (m *Model) PluginConfig(plugin string, config interface{}) error {
 	cfg, err := m.backend.PluginConfig(plugin)
@@ -18,11 +16,7 @@ func (m *Model) PluginConfig(plugin string, config interface{}) error {
 		return err
 	}
 
-	if err := mapstructure.Decode(cfg, config); err != nil {
-		return err
-	}
-
-	return nil
+	return m.util.DecodeData(cfg, config)
 }
 
 /*

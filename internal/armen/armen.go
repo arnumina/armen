@@ -153,7 +153,7 @@ func (a *Armen) Run() error {
 
 	// Model
 	//..................................................................................................................
-	rModel, err := model.New(rLogger, rBus, rBackend).Build()
+	rModel, err := model.New(a.util, rLogger, rBus, rBackend).Build()
 	if err != nil {
 		return a.onError(err)
 	}

@@ -12,7 +12,6 @@ package config
 import (
 	"github.com/arnumina/config"
 	"github.com/arnumina/failure"
-	"github.com/mitchellh/mapstructure"
 
 	"github.com/arnumina/armen/internal/pkg/application"
 	"github.com/arnumina/armen/internal/pkg/util"
@@ -105,7 +104,7 @@ func (c *Config) load() error {
 		return err
 	}
 
-	if err := mapstructure.Decode(cfg, &c.cfg); err != nil {
+	if err := c.util.DecodeData(cfg, &c.cfg); err != nil {
 		return err
 	}
 

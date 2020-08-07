@@ -20,6 +20,7 @@ import (
 	"github.com/arnumina/crypto"
 	"github.com/arnumina/logger"
 	"github.com/arnumina/uuid"
+	"github.com/mitchellh/mapstructure"
 )
 
 const (
@@ -90,6 +91,22 @@ func (u *Util) UnixToTime(timestamp string) time.Time {
 	}
 
 	return time.Unix(ts, 0).Local()
+}
+
+// DecodeData AFAIRE.
+func (u *Util) DecodeData(input, output interface{}) error {
+	decoderConfig := &mapstructure.DecoderConfig{
+		DecodeHook:       mapstructure.StringToTimeDurationHookFunc(),
+		Result:           output,
+		WeaklyTypedInput: true,
+	}
+
+	decoder, err := mapstructure.NewDecoder(decoderConfig)
+	if err != nil {
+		return err
+	}
+
+	return decoder.Decode(input)
 }
 
 /*
