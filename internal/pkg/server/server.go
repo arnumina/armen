@@ -120,9 +120,9 @@ func (s *Server) Port() int {
 	return s.port
 }
 
-// NewRouter AFAIRE.
-func (s *Server) NewRouter(prefix string) *mux.Router {
-	return s.router.PathPrefix(fmt.Sprintf("/%s", prefix)).Subrouter()
+// Router AFAIRE.
+func (s *Server) Router() *mux.Router {
+	return s.router
 }
 
 // Stop AFAIRE.

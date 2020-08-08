@@ -1,6 +1,6 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/arnumina/armen.core v0.0.0-20200807105409-dbcd04f807d5 h1:5yCJUcieWBh7WY9VbqNbkgUrY+mqwI+3CDzn2WVOgaY=
-github.com/arnumina/armen.core v0.0.0-20200807105409-dbcd04f807d5/go.mod h1:a1580ZyYcZdrATzNInbuonTXtUX2LwVNTWu7VTxm1W4=
+github.com/arnumina/armen.core v0.0.0-20200808161238-459a4d50303f h1:MdyxtyYLuEnsa4if1nvK/UStUcMHaoN62RHQI3YPuSo=
+github.com/arnumina/armen.core v0.0.0-20200808161238-459a4d50303f/go.mod h1:a1580ZyYcZdrATzNInbuonTXtUX2LwVNTWu7VTxm1W4=
 github.com/arnumina/config v0.0.0-20200713162522-b3a68382e176 h1:GGQZWRGv/F8b71Gm8BCuEKVf+5z7fqFwYFA7rDJ/KQQ=
 github.com/arnumina/config v0.0.0-20200713162522-b3a68382e176/go.mod h1:1OBnZKftL+ZwyrmyKOWNzGA3kLImL0F4pUgfn300h/A=
 github.com/arnumina/crypto v0.0.0-20200718202434-d84a54720f1f h1:PCjLKem3iNTjMjyX9nwzz11BQZDOzbnoUM4E75guW3o=

@@ -3,7 +3,7 @@ module github.com/arnumina/armen
 go 1.14
 
 require (
-	github.com/arnumina/armen.core v0.0.0-20200807105409-dbcd04f807d5
+	github.com/arnumina/armen.core v0.0.0-20200808161238-459a4d50303f
 	github.com/arnumina/config v0.0.0-20200713162522-b3a68382e176
 	github.com/arnumina/crypto v0.0.0-20200718202434-d84a54720f1f
 	github.com/arnumina/failure v0.0.0-20200712145805-92d1fe949ac6
