@@ -32,6 +32,7 @@ type (
 	Resource interface {
 		Clean() error
 		AllEvents() ([]*model.Event, error)
+		AllInstances() ([]*model.Instance, error)
 		PluginConfig(plugin string) (interface{}, error)
 		Lock(name, owner string, duration time.Duration) (bool, error)
 		Unlock(name, owner string) error
